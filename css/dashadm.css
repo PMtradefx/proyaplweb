@@ -1,0 +1,120 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f68b30;
+    padding: 20px;
+}
+
+.logo img {
+    width: 200px;
+}
+
+.Titulo h1 {
+    margin-top: 30px;
+    text-align: center;
+    font-size: 24px;
+    color: #333;
+}
+.datos{
+    display: flex;
+    align-items: center;
+}
+
+.Saludo {
+    text-align: right;
+    align-items: center ;
+    margin-right: 20px;
+}
+.logout img{
+    max-width: 60px;
+}
+
+.new-tutoring-btn {
+    background-color: #f68b30;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+thead th {
+    background-color: #f0f0f0;
+    padding: 15px;
+    text-align: center;
+    border: 1px solid #ccc;
+}
+
+tbody td {
+    height: 40px;
+    border: 1px solid #ccc;
+    text-align: center;
+}
+
+.tutoring {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+}
+.navflechas{
+    display: flex;
+    margin-top: 10px;
+}
+.navflechas img{
+    max-width: 30px;
+    margin-left: 20px;
+}
+.superior {
+    margin: 0 auto; /* Add this to center the container */
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 80%;
+}
+
+.Titulo {
+    text-align: center;
+    flex: 1;
+}
+
+.botonsolicitud, .navegacioncalendario {
+    margin-left: auto;
+}   
+  .footer {
+    margin-top: 20px;
+    background-color: #f68b30;
+    padding: 10px;
+    text-align: left;
+    color: #ffffff;
+    font-size: 12px;
+    clear: both;
+    height: 40px;
+  }
+  .footer p{
+    margin-left: 20px;
+  }
