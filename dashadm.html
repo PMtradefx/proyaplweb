@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Horario de Tutorías</title>
     <link rel="stylesheet" href="css/dashadm.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 </head>
 <body>
     <header>
@@ -20,28 +21,136 @@
             </div>
         </div>
     </header>
-        <div class="superior"> 
-            <div class="Titulo">
-                <h1>Gestión de usuario</h1>
+    <div class="superior"> 
+        <div class="Titulo">
+            <h1>Gestión de usuario</h1>
+        </div>
+        <div class="navegacioncalendario">
+            <div class="botonsolicitud">
+                <button class="resgistronuevo" onclick="openModal()">Registrar nuevo usuario</button>
             </div>
-            <div class="navegacioncalendario">
-                <div class="botonsolicitud">
-                    <button class="new-tutoring-btn">Registrar nuevo usuario</button>
-                </div>
-            </div>
-        </div>    
+        </div>
+    </div> 
+    <div class="tablas">   
         <table id="tabla-usuarios">
             <thead>
-                <tr>
-                    <th>Nombre de usuario</th>
-                    <th>Rol</th>
-                    <th>Acciones</th>
-                </tr>
+            <tr>
+                <th>Usuario</th>
+                <th>Nombre</th>
+                <th>Correo electronico</th>
+                <th>Rol</th>
+                <th>Tutor</th>
+                <th>Fase</th>
+                <th>Acciones</th>
+            </tr>
             </thead>
-            <tbody id="tbody-usuarios">
-                <!-- Los usuarios se agregarán aquí -->
+            <tbody id="tabla-usuarios-body">
+            <tr>
+            </tr>
+            <tr>
             </tbody>
         </table>
+    </div>
+    <div id="modal" class="modal">
+        <div class="modal-content">
+          <div style="display: flex;" class="encabezado">
+            <div style="display: flex; justify-content: center; width: 100%;" class="registro">
+              <h1 id="modal-title">Registrar nuevo usuario</h1>
+            </div>
+            <div class="cerrar" onclick="closeModal()">
+              <img style="max-height: 30px; margin-right: 15px;" src="img/cerrar.png" alt="">
+            </div>
+          </div>
+          <div style="font-size:18px; padding-top:20px; text-align:center;" class="datosusuario">
+            <p><strong>Cédula: </strong> <input type="text" id="cedula" style="width: 100%; height: 30px; padding: 10px; border: 1px solid #ccc; border-radius: 5px;"></p>
+            <p><strong>Nombre: </strong> <input type="text" id="nombre" style="width: 100%; height: 30px; padding: 10px; border: 1px solid #ccc; border-radius: 5px;"></p>
+            <p><strong>Correo electrónico: </strong> <input type="email" id="correo" style="width: 100%; height: 30px; padding: 10px; border: 1px solid #ccc; border-radius: 5px;"></p>
+            <p><strong>Rol: </strong> 
+              <select id="rol" style="width: 100%; height: 40px; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
+                <option value="" selected>Seleccionar rol</option>
+                <option value="estudiante">Estudiante</option>
+                <option value="profesor">Profesor</option>
+                <option value="administrador">Administrador</option>
+              </select>
+            </p>
+            <div id="tutor" style="display: none;">
+              <p><strong>Tutor: </strong> 
+                <select id="tutor-select" style="width: 100%; height: 40px; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
+                  <option value="" selected>Seleccionar tutor</option>
+                  <option value="Tutor 1">Tutor 1</option>
+                  <option value="Tutor 2">Tutor 2</option>
+                  <option value="Tutor 3">Tutor 3</option>
+                </select>
+              </p>
+            </div>
+            <div id="fasediv" style="display: none;">
+                <p><strong>Fase: </strong> 
+                  <select id="fase" style="width: 100%; height: 40px; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
+                    <option value="" selected>Seleccionar fase</option>
+                    <option value="fase 1">Fase de diseño</option>
+                    <option value="fase 2">Fase de resultados</option>
+                  </select>
+                </p>
+            </div>
+            <input type="hidden" id="edit-user-id">
+          </div>
+          <div style="text-align: center; margin-top: 20px;">
+            <button style="background-color: #f68b30; border: none; color: white; padding: 10px 20px; cursor: pointer; border-radius: 5px;" type="button" class="guardarRegistro" onclick="saveUser()">Registrar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Diálogo modal para leer los parámetros -->
+    <div id="update-modal" class="modal">
+        <div class="modal-content">
+          <div style="display: flex;" class="encabezado">
+            <div style="display: flex; justify-content: center; width: 100%;" class="registro">
+              <h1 id="update-modal-title">Actualizar datos</h1>
+            </div>
+            <div class="cerrar" onclick="closeUpdateModal()">
+              <img style="max-height: 30px; margin-right: 15px;" src="img/cerrar.png" alt="">
+            </div>
+          </div>
+          <div style="font-size:18px; padding-top:20px; text-align:center;" class="datosusuario">
+            <p><strong>Cédula: </strong> <input type="text" id="update-cedula" style="width: 100%; height: 30px; padding: 10px; border: 1px solid #ccc; border-radius: 5px;"></p>
+            <p><strong>Nombre: </strong> <input type="text" id="update-nombre" style="width: 100%; height: 30px; padding: 10px; border: 1px solid #ccc; border-radius: 5px;"></p>
+            <p><strong>Correo electrónico: </strong> <input type="email" id="update-correo" style="width: 100%; height: 30px; padding: 10px; border: 1px solid #ccc; border-radius: 5px;"></p>
+            <p><strong>Rol: </strong> 
+              <select id="update-rol" style="width: 100%; height: 40px; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
+                <option value="" selected>Seleccionar rol</option>
+                <option value="estudiante">Estudiante</option>
+                <option value="profesor">Profesor</option>
+                <option value="administrador">Administrador</option>
+              </select>
+            </p>
+            <div id="update-tutor" style="display: none;">
+              <p><strong>Tutor: </strong> 
+                <select id="update-tutor-select" style="width: 100%; height: 40px; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
+                  <option value="" selected>Seleccionar tutor</option>
+                  <option value="Tutor 1">Tutor 1</option>
+                  <option value="Tutor 2">Tutor 2</option>
+                  <option value="Tutor 3">Tutor 3</option>
+                </select>
+              </p>
+            </div>
+            <div id="update-fasediv" style="display: none;">
+                <p><strong>Fase: </strong> 
+                  <select id="update-fase" style="width: 100%; height: 40px; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
+                    <option value="" selected>Seleccionar fase</option>
+                    <option value="fase 1"> Fase 1</option>
+                    <option value="fase 2 ">Fase 2</option>
+                  </select>
+                </p>
+                </div>
+            <input type="hidden" id="update-user-id">
+          </div>
+          <div style="text-align: center; margin-top: 20px;">
+                <button style="background-color: #f68b30; border: none; color: white; padding: 10px 20px; cursor: pointer; border-radius: 5px;" type="button" class="guardarRegistro" onclick="updateUser()">Actualizar</button>
+            </div>
+          </div>
+        </div>
+        <script src="js/saludo.js"></script>
+        <script src="js/logout.js"></script>
         <script src="js/users.js"></script>
     <footer class="footer">
         <p> Universidad Laica Eloy Alfaro De Manabí.| &copy; Todos los derechos reservados.</p>

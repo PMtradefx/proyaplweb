@@ -8,7 +8,7 @@ body {
     font-family: Arial, sans-serif;
 }
 
-.container {
+.tablas {
     width: 80%;
     margin: 0 auto;
 }
@@ -45,7 +45,7 @@ header {
     max-width: 60px;
 }
 
-.new-tutoring-btn {
+.resgistronuevo{
     background-color: #f68b30;
     border: none;
     color: white;
@@ -89,7 +89,7 @@ tbody td {
     margin-left: 20px;
 }
 .superior {
-    margin: 0 auto; /* Add this to center the container */
+    margin: 0 auto; 
     margin-top: 10px;
     display: flex;
     justify-content: center;
@@ -118,3 +118,57 @@ tbody td {
   .footer p{
     margin-left: 20px;
   }
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto; 
+    background-color: rgba(0,0,0,0.8);
+    padding: 20px;
+}
+  
+.modal-content {
+    background-color: #ffffff;
+    margin: 8% auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    width: 30%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+}
+
+#modal-title {
+    text-align: center;
+    margin: 2% auto;
+}
+
+input[type="text"], input[type="password"] {
+    border: none;
+    border-bottom: 1px solid #ccc;
+    padding: 10px;
+    width: 100%;
+}
+
+input[type="text"]:focus, input[type="password"]:focus {
+    outline: none;
+    border-bottom: 1px solid #f68b30;
+}
+  
+.close {
+    color: #333;
+    float: right;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+}
+  
+.close:hover,
+.close:focus {
+    color: #f68b30;
+    text-decoration: none;
+    cursor: pointer;
+}

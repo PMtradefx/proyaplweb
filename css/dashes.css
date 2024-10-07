@@ -45,7 +45,7 @@ header {
     max-width: 60px;
 }
 
-.new-tutoring-btn {
+.tutorianueva {
     background-color: #f68b30;
     border: none;
     color: white;
@@ -73,8 +73,15 @@ tbody td {
     text-align: center;
 }
 
-.tutoring {
+.tutof1 {
     background-color: #4CAF50;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+}
+.tutof2{
+    background-color: #f68b30;
     color: white;
     padding: 10px;
     border-radius: 5px;
